@@ -1,0 +1,25 @@
+{
+  "Chaincode": "voucher",
+  "EndorsersByGroups": {
+    "G0": [
+      {
+        "MSPID": "supplier-fish-com",
+        "Endpoint": "192.168.1.91:7002"
+      }
+    ],
+    "G1": [
+      {
+        "MSPID": "dealer-fish-com",
+        "Endpoint": "192.168.1.91:7003"
+      }
+    ]
+  },
+  "Layouts": [
+    {
+      "quantities_by_group": {
+        "G0": 1,
+        "G1": 1
+      }
+    }
+  ]
+}

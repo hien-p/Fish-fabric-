@@ -1,0 +1,41 @@
+---
+OrdererOrgs:
+  - Name: example.com
+    Domain: example.com
+    Specs:
+      - Hostname: orderer1
+        SANS:
+          - 192.168.1.91
+      - Hostname: orderer2
+        SANS:
+          - 192.168.1.91
+
+PeerOrgs:
+  - Name: dealer.fish.com
+    Domain: dealer.fish.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.dealer.fish.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer2
+        CommonName: peer2.dealer.fish.com
+        SANS:
+          - 192.168.1.91
+  - Name: supplier.fish.com
+    Domain: supplier.fish.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.supplier.fish.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.supplier.fish.com
+        SANS:
+          - 192.168.1.91

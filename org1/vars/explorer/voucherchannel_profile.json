@@ -1,0 +1,143 @@
+{
+  "name": "fishnetwork",
+  "x-type": "hlfv1",
+  "version": "1.0.0",
+  "client": {
+    "tlsEnable": true,
+    "adminCredential": {
+      "id": "exploreradmin",
+      "password": "exploreradminpw"
+    },
+    "enableAuthentication": true,
+    "organization": "supplier.fish.com"
+  },
+  "channels": {
+    "voucherchannel": {
+      "orderers": [
+        "orderer1.example.com",
+        "orderer2.example.com"
+      ],
+      "peers": [
+        "peer1.supplier.fish.com",
+        "peer2.dealer.fish.com"
+      ]
+    }
+  },
+  "organizations": {
+    "dealer.fish.com": {
+      "mspid": "dealer-fish-com",
+      "adminPrivateKey": {
+        "path": "/keyfiles/peerOrganizations/dealer.fish.com/users/Admin@dealer.fish.com/msp/keystore/priv_sk"
+      },
+      "signedCert": {
+        "path": "/keyfiles/peerOrganizations/dealer.fish.com/users/Admin@dealer.fish.com/msp/signcerts/Admin@dealer.fish.com-cert.pem"
+      },
+      "peers": [
+        "peer2.dealer.fish.com"
+      ],
+      "orderers": [
+      ],
+      "certificateAuthorities": [
+        "ca1.dealer.fish.com"
+      ]
+    },
+    "example.com": {
+      "mspid": "example-com",
+      "adminPrivateKey": {
+        "path": "/keyfiles/ordererOrganizations/example.com/users/Admin@example.com/msp/keystore/priv_sk"
+      },
+      "signedCert": {
+        "path": "/keyfiles/ordererOrganizations/example.com/users/Admin@example.com/msp/signcerts/Admin@example.com-cert.pem"
+      },
+      "peers": [
+      ],
+      "orderers": [
+        "orderer1.example.com",
+        "orderer2.example.com"
+      ]
+    },
+    "supplier.fish.com": {
+      "mspid": "supplier-fish-com",
+      "adminPrivateKey": {
+        "path": "/keyfiles/peerOrganizations/supplier.fish.com/users/Admin@supplier.fish.com/msp/keystore/priv_sk"
+      },
+      "signedCert": {
+        "path": "/keyfiles/peerOrganizations/supplier.fish.com/users/Admin@supplier.fish.com/msp/signcerts/Admin@supplier.fish.com-cert.pem"
+      },
+      "peers": [
+        "peer1.supplier.fish.com"
+      ],
+      "orderers": [
+      ],
+      "certificateAuthorities": [
+        "ca1.supplier.fish.com"
+      ]
+    }
+  },
+  "orderers": {
+    "orderer1.example.com": {
+      "url": "grpcs://192.168.1.91:7006",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer1.example.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICojCCAkigAwIBAgIUBNLXGrwN9wmGAoQEMIJUT+ThjqswCgYIKoZIzj0EAwIw\najELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRQwEgYDVQQKDAtleGFtcGxlLmNvbTEaMBgGA1UEAwwRdGxzY2Eu\nZXhhbXBsZS5jb20wHhcNMjMxMjI2MTQyNTI1WhcNMzMxMjIzMTQyNTI1WjBqMQsw\nCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmExEDAOBgNVBAcMB1Jh\nbGVpZ2gxFDASBgNVBAoMC2V4YW1wbGUuY29tMRowGAYDVQQDDBF0bHNjYS5leGFt\ncGxlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABDo4SOXuWjLD1xPUkcCd\nS/Y5bEKHRoxadHtq0t/lt+i31S+ZXL/JjFBkBMF0Qg3uBwcvyqsk/7wpUSVa4eNc\nb4ajgcswgcgwHQYDVR0OBBYEFHJOIYq/hU2FaNGAU08HVBfDtUK+MB8GA1UdIwQY\nMBaAFHJOIYq/hU2FaNGAU08HVBfDtUK+MA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0P\nAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBGBgNVHREE\nPzA9hwTAqAFbghF0bHNjYS5leGFtcGxlLmNvbYIRdGxzY2EtZXhhbXBsZS1jb22C\nCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNIADBFAiB/NDq4srv+aqRfVSME\nDfpLuiSpPCP3KNjWJN5iO1sOgQIhAMIsWDLfG36ilTNgxQG2cS0gVQawM0ifyn5Z\nWT5ZOLoF\n-----END CERTIFICATE-----"
+      }
+    },
+    "orderer2.example.com": {
+      "url": "grpcs://192.168.1.91:7007",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer2.example.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICojCCAkigAwIBAgIUBNLXGrwN9wmGAoQEMIJUT+ThjqswCgYIKoZIzj0EAwIw\najELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRQwEgYDVQQKDAtleGFtcGxlLmNvbTEaMBgGA1UEAwwRdGxzY2Eu\nZXhhbXBsZS5jb20wHhcNMjMxMjI2MTQyNTI1WhcNMzMxMjIzMTQyNTI1WjBqMQsw\nCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmExEDAOBgNVBAcMB1Jh\nbGVpZ2gxFDASBgNVBAoMC2V4YW1wbGUuY29tMRowGAYDVQQDDBF0bHNjYS5leGFt\ncGxlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABDo4SOXuWjLD1xPUkcCd\nS/Y5bEKHRoxadHtq0t/lt+i31S+ZXL/JjFBkBMF0Qg3uBwcvyqsk/7wpUSVa4eNc\nb4ajgcswgcgwHQYDVR0OBBYEFHJOIYq/hU2FaNGAU08HVBfDtUK+MB8GA1UdIwQY\nMBaAFHJOIYq/hU2FaNGAU08HVBfDtUK+MA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0P\nAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBGBgNVHREE\nPzA9hwTAqAFbghF0bHNjYS5leGFtcGxlLmNvbYIRdGxzY2EtZXhhbXBsZS1jb22C\nCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNIADBFAiB/NDq4srv+aqRfVSME\nDfpLuiSpPCP3KNjWJN5iO1sOgQIhAMIsWDLfG36ilTNgxQG2cS0gVQawM0ifyn5Z\nWT5ZOLoF\n-----END CERTIFICATE-----"
+      }
+    }
+  },
+  "peers": {
+    "peer1.supplier.fish.com": {
+      "url": "grpcs://192.168.1.91:7002",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer1.supplier.fish.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICyjCCAnCgAwIBAgIUXfOaiB/a7QvsDRLqucqMLq1KdGswCgYIKoZIzj0EAwIw\ndzELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRowGAYDVQQKDBFzdXBwbGllci5maXNoLmNvbTEhMB8GA1UEAwwY\ndGxzY2ExLnN1cHBsaWVyLmZpc2guY29tMB4XDTIzMTIyNjE0MjYxMFoXDTMzMTIy\nMzE0MjYxMFowdzELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5h\nMRAwDgYDVQQHDAdSYWxlaWdoMRowGAYDVQQKDBFzdXBwbGllci5maXNoLmNvbTEh\nMB8GA1UEAwwYdGxzY2ExLnN1cHBsaWVyLmZpc2guY29tMFkwEwYHKoZIzj0CAQYI\nKoZIzj0DAQcDQgAE5/uOejRMykrS3xo6TbTbgXk6sbTOblKMq2lTxig/eQolBsSw\nXF9aaVedsPXO4BPNHSvhhUzk9b/+r6aEGdzphKOB2TCB1jAdBgNVHQ4EFgQU7YYJ\nAINwreWJGf11GFLAbTWCZkUwHwYDVR0jBBgwFoAU7YYJAINwreWJGf11GFLAbTWC\nZkUwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYI\nKwYBBQUHAwEGCCsGAQUFBwMCMFQGA1UdEQRNMEuHBMCoAVuCGHRsc2NhMS5zdXBw\nbGllci5maXNoLmNvbYIYdGxzY2ExLXN1cHBsaWVyLWZpc2gtY29tgglsb2NhbGhv\nc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIhALIrG7wLklAlqg6M83vLsLQTlDKz\n4kmDD4MbvImUYTT9AiAWCDyVu+xwJEmsPJOu2WmdfBEyqiwEjTzu1DxrECiI2w==\n-----END CERTIFICATE-----"
+      }
+    },
+    "peer2.dealer.fish.com": {
+      "url": "grpcs://192.168.1.91:7003",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer2.dealer.fish.com"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICvjCCAmSgAwIBAgIUF3j4vrOc1d65xMUUo0vLrhZVOFUwCgYIKoZIzj0EAwIw\nczELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRgwFgYDVQQKDA9kZWFsZXIuZmlzaC5jb20xHzAdBgNVBAMMFnRs\nc2NhMS5kZWFsZXIuZmlzaC5jb20wHhcNMjMxMjI2MTQyNDUyWhcNMzMxMjIzMTQy\nNDUyWjBzMQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmExEDAO\nBgNVBAcMB1JhbGVpZ2gxGDAWBgNVBAoMD2RlYWxlci5maXNoLmNvbTEfMB0GA1UE\nAwwWdGxzY2ExLmRlYWxlci5maXNoLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEH\nA0IABH2c0VxgRyX2OUGSQ5Nk5/BtZ0v+Yn0J1rTh6eKNodV55x076uA7OYUA/yNU\novSLPxvme2wDKO4WaYdl0vnjuX2jgdUwgdIwHQYDVR0OBBYEFALBoSgXmJXgCywd\nzVlyBPF61SymMB8GA1UdIwQYMBaAFALBoSgXmJXgCywdzVlyBPF61SymMA8GA1Ud\nEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMB\nBggrBgEFBQcDAjBQBgNVHREESTBHhwTAqAFbghZ0bHNjYTEuZGVhbGVyLmZpc2gu\nY29tghZ0bHNjYTEtZGVhbGVyLWZpc2gtY29tgglsb2NhbGhvc3SHBH8AAAEwCgYI\nKoZIzj0EAwIDSAAwRQIgR88+qFa/5pFdJB/kvshFAL84bPIYntygAsz4FF+7aHoC\nIQC4cX6vKBBfFXNJlCyG4Iw5HqLIoZcwlv5NFaV4MzTV8w==\n-----END CERTIFICATE-----"
+      }
+    }
+  },
+  "entityMatchers": {
+    "orderer": [
+      { "mappedHost": "orderer1.example.com",
+        "pattern": "(\\w*)orderer1.example.com(\\w*)",
+        "sslTargetOverrideUrlSubstitutionExp": "orderer1.example.com",
+        "urlSubstitutionExp": "192.168.1.91:7006"
+      },
+      { "mappedHost": "orderer2.example.com",
+        "pattern": "(\\w*)orderer2.example.com(\\w*)",
+        "sslTargetOverrideUrlSubstitutionExp": "orderer2.example.com",
+        "urlSubstitutionExp": "192.168.1.91:7007"
+      }
+    ],
+    "peer": [
+      { "mappedHost": "peer1.supplier.fish.com",
+        "pattern": "(\\w*)peer1.supplier.fish.com(\\w*)",
+        "sslTargetOverrideUrlSubstitutionExp": "peer1.supplier.fish.com",
+        "urlSubstitutionExp": "192.168.1.91:7002"
+      },
+      { "mappedHost": "peer2.dealer.fish.com",
+        "pattern": "(\\w*)peer2.dealer.fish.com(\\w*)",
+        "sslTargetOverrideUrlSubstitutionExp": "peer2.dealer.fish.com",
+        "urlSubstitutionExp": "192.168.1.91:7003"
+      }
+    ]
+  }
+}

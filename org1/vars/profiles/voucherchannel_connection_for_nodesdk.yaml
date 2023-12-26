@@ -1,0 +1,83 @@
+---
+"name": "fabric-network"
+"x-type": "hlfv1"
+"version": "1.0.0"
+"channels":
+  "voucherchannel":
+    "orderers":
+    - "orderer1.example.com"
+    - "orderer2.example.com"
+    "peers":
+    - "peer1.supplier.fish.com"
+    - "peer2.dealer.fish.com"
+"organizations":
+  "dealer.fish.com":
+    "mspid": "dealer-fish-com"
+    "peers":
+    - "peer2.dealer.fish.com"
+    "orderers": []
+    "certificateAuthorities":
+    - "ca1.dealer.fish.com"
+  "example.com":
+    "mspid": "example-com"
+    "peers": []
+    "orderers":
+    - "orderer1.example.com"
+    - "orderer2.example.com"
+  "supplier.fish.com":
+    "mspid": "supplier-fish-com"
+    "peers":
+    - "peer1.supplier.fish.com"
+    "orderers": []
+    "certificateAuthorities":
+    - "ca1.supplier.fish.com"
+
+"orderers":
+  "orderer1.example.com":
+    "url": "grpcs://192.168.1.91:7006"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer1.example.com"
+    "tlsCACerts":
+      "pem": "-----BEGIN CERTIFICATE-----\nMIICojCCAkigAwIBAgIUBNLXGrwN9wmGAoQEMIJUT+ThjqswCgYIKoZIzj0EAwIw\najELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRQwEgYDVQQKDAtleGFtcGxlLmNvbTEaMBgGA1UEAwwRdGxzY2Eu\nZXhhbXBsZS5jb20wHhcNMjMxMjI2MTQyNTI1WhcNMzMxMjIzMTQyNTI1WjBqMQsw\nCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmExEDAOBgNVBAcMB1Jh\nbGVpZ2gxFDASBgNVBAoMC2V4YW1wbGUuY29tMRowGAYDVQQDDBF0bHNjYS5leGFt\ncGxlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABDo4SOXuWjLD1xPUkcCd\nS/Y5bEKHRoxadHtq0t/lt+i31S+ZXL/JjFBkBMF0Qg3uBwcvyqsk/7wpUSVa4eNc\nb4ajgcswgcgwHQYDVR0OBBYEFHJOIYq/hU2FaNGAU08HVBfDtUK+MB8GA1UdIwQY\nMBaAFHJOIYq/hU2FaNGAU08HVBfDtUK+MA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0P\nAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBGBgNVHREE\nPzA9hwTAqAFbghF0bHNjYS5leGFtcGxlLmNvbYIRdGxzY2EtZXhhbXBsZS1jb22C\nCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNIADBFAiB/NDq4srv+aqRfVSME\nDfpLuiSpPCP3KNjWJN5iO1sOgQIhAMIsWDLfG36ilTNgxQG2cS0gVQawM0ifyn5Z\nWT5ZOLoF\n-----END CERTIFICATE-----"
+  "orderer2.example.com":
+    "url": "grpcs://192.168.1.91:7007"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer2.example.com"
+    "tlsCACerts":
+      "pem": "-----BEGIN CERTIFICATE-----\nMIICojCCAkigAwIBAgIUBNLXGrwN9wmGAoQEMIJUT+ThjqswCgYIKoZIzj0EAwIw\najELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRQwEgYDVQQKDAtleGFtcGxlLmNvbTEaMBgGA1UEAwwRdGxzY2Eu\nZXhhbXBsZS5jb20wHhcNMjMxMjI2MTQyNTI1WhcNMzMxMjIzMTQyNTI1WjBqMQsw\nCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmExEDAOBgNVBAcMB1Jh\nbGVpZ2gxFDASBgNVBAoMC2V4YW1wbGUuY29tMRowGAYDVQQDDBF0bHNjYS5leGFt\ncGxlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABDo4SOXuWjLD1xPUkcCd\nS/Y5bEKHRoxadHtq0t/lt+i31S+ZXL/JjFBkBMF0Qg3uBwcvyqsk/7wpUSVa4eNc\nb4ajgcswgcgwHQYDVR0OBBYEFHJOIYq/hU2FaNGAU08HVBfDtUK+MB8GA1UdIwQY\nMBaAFHJOIYq/hU2FaNGAU08HVBfDtUK+MA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0P\nAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBGBgNVHREE\nPzA9hwTAqAFbghF0bHNjYS5leGFtcGxlLmNvbYIRdGxzY2EtZXhhbXBsZS1jb22C\nCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNIADBFAiB/NDq4srv+aqRfVSME\nDfpLuiSpPCP3KNjWJN5iO1sOgQIhAMIsWDLfG36ilTNgxQG2cS0gVQawM0ifyn5Z\nWT5ZOLoF\n-----END CERTIFICATE-----"
+
+"peers":
+  "peer1.supplier.fish.com":
+    "url": "grpcs://192.168.1.91:7002"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.supplier.fish.com"
+    "tlsCACerts":
+      "pem": "-----BEGIN CERTIFICATE-----\nMIICyjCCAnCgAwIBAgIUXfOaiB/a7QvsDRLqucqMLq1KdGswCgYIKoZIzj0EAwIw\ndzELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRowGAYDVQQKDBFzdXBwbGllci5maXNoLmNvbTEhMB8GA1UEAwwY\ndGxzY2ExLnN1cHBsaWVyLmZpc2guY29tMB4XDTIzMTIyNjE0MjYxMFoXDTMzMTIy\nMzE0MjYxMFowdzELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5h\nMRAwDgYDVQQHDAdSYWxlaWdoMRowGAYDVQQKDBFzdXBwbGllci5maXNoLmNvbTEh\nMB8GA1UEAwwYdGxzY2ExLnN1cHBsaWVyLmZpc2guY29tMFkwEwYHKoZIzj0CAQYI\nKoZIzj0DAQcDQgAE5/uOejRMykrS3xo6TbTbgXk6sbTOblKMq2lTxig/eQolBsSw\nXF9aaVedsPXO4BPNHSvhhUzk9b/+r6aEGdzphKOB2TCB1jAdBgNVHQ4EFgQU7YYJ\nAINwreWJGf11GFLAbTWCZkUwHwYDVR0jBBgwFoAU7YYJAINwreWJGf11GFLAbTWC\nZkUwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYI\nKwYBBQUHAwEGCCsGAQUFBwMCMFQGA1UdEQRNMEuHBMCoAVuCGHRsc2NhMS5zdXBw\nbGllci5maXNoLmNvbYIYdGxzY2ExLXN1cHBsaWVyLWZpc2gtY29tgglsb2NhbGhv\nc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIhALIrG7wLklAlqg6M83vLsLQTlDKz\n4kmDD4MbvImUYTT9AiAWCDyVu+xwJEmsPJOu2WmdfBEyqiwEjTzu1DxrECiI2w==\n-----END CERTIFICATE-----"
+  "peer2.dealer.fish.com":
+    "url": "grpcs://192.168.1.91:7003"
+    "grpcOptions":
+      "ssl-target-name-override": "peer2.dealer.fish.com"
+    "tlsCACerts":
+      "pem": "-----BEGIN CERTIFICATE-----\nMIICvjCCAmSgAwIBAgIUF3j4vrOc1d65xMUUo0vLrhZVOFUwCgYIKoZIzj0EAwIw\nczELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRgwFgYDVQQKDA9kZWFsZXIuZmlzaC5jb20xHzAdBgNVBAMMFnRs\nc2NhMS5kZWFsZXIuZmlzaC5jb20wHhcNMjMxMjI2MTQyNDUyWhcNMzMxMjIzMTQy\nNDUyWjBzMQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmExEDAO\nBgNVBAcMB1JhbGVpZ2gxGDAWBgNVBAoMD2RlYWxlci5maXNoLmNvbTEfMB0GA1UE\nAwwWdGxzY2ExLmRlYWxlci5maXNoLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEH\nA0IABH2c0VxgRyX2OUGSQ5Nk5/BtZ0v+Yn0J1rTh6eKNodV55x076uA7OYUA/yNU\novSLPxvme2wDKO4WaYdl0vnjuX2jgdUwgdIwHQYDVR0OBBYEFALBoSgXmJXgCywd\nzVlyBPF61SymMB8GA1UdIwQYMBaAFALBoSgXmJXgCywdzVlyBPF61SymMA8GA1Ud\nEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMB\nBggrBgEFBQcDAjBQBgNVHREESTBHhwTAqAFbghZ0bHNjYTEuZGVhbGVyLmZpc2gu\nY29tghZ0bHNjYTEtZGVhbGVyLWZpc2gtY29tgglsb2NhbGhvc3SHBH8AAAEwCgYI\nKoZIzj0EAwIDSAAwRQIgR88+qFa/5pFdJB/kvshFAL84bPIYntygAsz4FF+7aHoC\nIQC4cX6vKBBfFXNJlCyG4Iw5HqLIoZcwlv5NFaV4MzTV8w==\n-----END CERTIFICATE-----"
+
+"certificateAuthorities":
+  "ca1.supplier.fish.com":
+    "url": "https://192.168.1.91:7000"
+    "tlsCACerts":
+      "pem": "-----BEGIN CERTIFICATE-----\nMIICvTCCAmSgAwIBAgIUZe2mCmmjrYr4w2RDusKwHiLo5iwwCgYIKoZIzj0EAwIw\ndDELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRowGAYDVQQKDBFzdXBwbGllci5maXNoLmNvbTEeMBwGA1UEAwwV\nY2ExLnN1cHBsaWVyLmZpc2guY29tMB4XDTIzMTIyNjE0MjYwOVoXDTMzMTIyMzE0\nMjYwOVowdDELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAw\nDgYDVQQHDAdSYWxlaWdoMRowGAYDVQQKDBFzdXBwbGllci5maXNoLmNvbTEeMBwG\nA1UEAwwVY2ExLnN1cHBsaWVyLmZpc2guY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAEHOomz+jRJUbW+bkp83ZYLP1ln9OOAFCQJs5gZRaoL2OJdfOIi5qsYeUo\nyaph1UeC/kh8l61dSm6RsAHcvDfe0aOB0zCB0DAdBgNVHQ4EFgQUA0iNtUZJ8HYU\nshseL2nBt1g8UOgwHwYDVR0jBBgwFoAUA0iNtUZJ8HYUshseL2nBt1g8UOgwDwYD\nVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUH\nAwEGCCsGAQUFBwMCME4GA1UdEQRHMEWHBMCoAVuCFWNhMS5zdXBwbGllci5maXNo\nLmNvbYIVY2ExLXN1cHBsaWVyLWZpc2gtY29tgglsb2NhbGhvc3SHBH8AAAEwCgYI\nKoZIzj0EAwIDRwAwRAIgRbxnnAPP2TYJtQ/6AfvKqnBL575QEzAFSGeRKFyzZMYC\nIFkpJV0f/mMvlyXZjulfCT1Nocahtiz5pmNgq/2ewNKY\n-----END CERTIFICATE-----"
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"
+  "ca1.dealer.fish.com":
+    "url": "https://192.168.1.91:7001"
+    "tlsCACerts":
+      "pem": "-----BEGIN CERTIFICATE-----\nMIICszCCAligAwIBAgIUGZnH0hqQjcAHqDBY6ksF6ujgZ3AwCgYIKoZIzj0EAwIw\ncDELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRgwFgYDVQQKDA9kZWFsZXIuZmlzaC5jb20xHDAaBgNVBAMME2Nh\nMS5kZWFsZXIuZmlzaC5jb20wHhcNMjMxMjI2MTQyNDUxWhcNMzMxMjIzMTQyNDUx\nWjBwMQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fyb2xpbmExEDAOBgNV\nBAcMB1JhbGVpZ2gxGDAWBgNVBAoMD2RlYWxlci5maXNoLmNvbTEcMBoGA1UEAwwT\nY2ExLmRlYWxlci5maXNoLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABE8k\n4BzcR0+2shB6T25cLzTmg8UMU/8eAi0c+EQNNymupLca8mMH9nsiM+chNyh8ICLc\nVy1GtZjCdeIqnnWUQSyjgc8wgcwwHQYDVR0OBBYEFCz0rtUCze4rp8OKog7Tf0Iy\n3vhfMB8GA1UdIwQYMBaAFCz0rtUCze4rp8OKog7Tf0Iy3vhfMA8GA1UdEwEB/wQF\nMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEF\nBQcDAjBKBgNVHREEQzBBhwTAqAFbghNjYTEuZGVhbGVyLmZpc2guY29tghNjYTEt\nZGVhbGVyLWZpc2gtY29tgglsb2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSQAw\nRgIhANeEHWLI2dvBgZ/7mW7imXWXlhWVXPMhPvnPNXvfz0PBAiEAzBRSEXjmspz6\nKKvY4cAtzNtdfIysLOgBbYVn0cVqRzk=\n-----END CERTIFICATE-----"
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"

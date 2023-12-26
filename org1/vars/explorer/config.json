@@ -1,0 +1,9 @@
+{
+  "network-configs": {
+    "fishnetwork": {
+      "name": "fishnetwork",
+      "profile": "./connection-profile/voucherchannel_profile.json"
+    }
+  },
+  "license": "Apache-2.0"
+}

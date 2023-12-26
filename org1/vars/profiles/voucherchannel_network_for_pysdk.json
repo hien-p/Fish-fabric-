@@ -1,0 +1,118 @@
+{
+  "name": "fabric-network",
+  "description": "Generated network configuration file",
+  "version": "0.1",
+  "client": {
+    "organization": "supplier.fish.com",
+    "credentialStore": {
+      "path": "/tmp/hfc-kvs",
+      "cryptoStore": {
+        "path": "/tmp/hfc-cvs"
+      },
+      "wallet": "wallet-name"
+    }
+  },
+  "organizations": {
+    "dealer.fish.com": {
+      "mspid": "dealer-fish-com",
+      "peers": [
+        "peer2.dealer.fish.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/dealer.fish.com/users/Admin@dealer.fish.com/msp/signcerts/Admin@dealer.fish.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/dealer.fish.com/users/Admin@dealer.fish.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "example.com": {
+      "mspid": "example-com",
+      "orderers": [
+        "orderer1.example.com",
+        "orderer2.example.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/ordererOrganizations/example.com/users/Admin@example.com/msp/signcerts/Admin@example.com-cert.pem",
+          "private_key": "/keyfiles/ordererOrganizations/example.com/users/Admin@example.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "supplier.fish.com": {
+      "mspid": "supplier-fish-com",
+      "peers": [
+        "peer1.supplier.fish.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/supplier.fish.com/users/Admin@supplier.fish.com/msp/signcerts/Admin@supplier.fish.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/supplier.fish.com/users/Admin@supplier.fish.com/msp/keystore/priv_sk"
+        }
+      }
+    }
+  },
+  "orderers": {
+    "orderer1.example.com": {
+      "url": "192.168.1.91:7006",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer1.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/ca.crt"
+      }
+    },
+    "orderer2.example.com": {
+      "url": "192.168.1.91:7007",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer2.example.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/ca.crt"
+      }
+    }
+  },
+  "peers": {
+    "peer1.supplier.fish.com": {
+      "url": "192.168.1.91:7002",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.supplier.fish.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/supplier.fish.com/peers/peer1.supplier.fish.com/tls/ca.crt"
+      }
+    },
+    "peer2.dealer.fish.com": {
+      "url": "192.168.1.91:7003",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer2.dealer.fish.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/dealer.fish.com/peers/peer2.dealer.fish.com/tls/ca.crt"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca1.supplier.fish.com": {
+      "url": "https://192.168.1.91:7000",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/supplier.fish.com/ca/ca1.supplier.fish.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    },
+    "ca1.dealer.fish.com": {
+      "url": "https://192.168.1.91:7001",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/dealer.fish.com/ca/ca1.dealer.fish.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    }
+  }
+}

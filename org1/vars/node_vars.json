@@ -1,0 +1,137 @@
+{
+  "allcas": [
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.supplier.fish.com",
+      "mspid": "supplier-fish-com",
+      "name": "ca1",
+      "oport": "8000",
+      "org": "supplier.fish.com",
+      "port": "7000",
+      "portmap": "-p 7000:7054 -p 8000:9443",
+      "type": "ca",
+      "url": "192.168.1.91"
+    },
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.dealer.fish.com",
+      "mspid": "dealer-fish-com",
+      "name": "ca1",
+      "oport": "8001",
+      "org": "dealer.fish.com",
+      "port": "7001",
+      "portmap": "-p 7001:7054 -p 8001:9443",
+      "type": "ca",
+      "url": "192.168.1.91"
+    }
+  ],
+  "allcouchdbs": [
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.supplier.fish.com.couchdb",
+      "mspid": "supplier-fish-com",
+      "name": "peer1.couchdb",
+      "org": "supplier.fish.com",
+      "port": "7004",
+      "portmap": "-p 7004:5984",
+      "type": "couchdb",
+      "url": "192.168.1.91"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.dealer.fish.com.couchdb",
+      "mspid": "dealer-fish-com",
+      "name": "peer2.couchdb",
+      "org": "dealer.fish.com",
+      "port": "7005",
+      "portmap": "-p 7005:5984",
+      "type": "couchdb",
+      "url": "192.168.1.91"
+    }
+  ],
+  "allorderers": [
+    {
+      "fullname": "orderer1.example.com",
+      "mspid": "example-com",
+      "name": "orderer1",
+      "oport": "8006",
+      "org": "example.com",
+      "port": "7006",
+      "portmap": "-p 7006:7050 -p 8006:7060",
+      "type": "orderer",
+      "url": "192.168.1.91"
+    },
+    {
+      "fullname": "orderer2.example.com",
+      "mspid": "example-com",
+      "name": "orderer2",
+      "oport": "8007",
+      "org": "example.com",
+      "port": "7007",
+      "portmap": "-p 7007:7050 -p 8007:7060",
+      "type": "orderer",
+      "url": "192.168.1.91"
+    }
+  ],
+  "allorgs": [
+    "dealer.fish.com",
+    "example.com",
+    "supplier.fish.com"
+  ],
+  "allpeers": [
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.supplier.fish.com",
+      "mspid": "supplier-fish-com",
+      "name": "peer1",
+      "oport": "8002",
+      "org": "supplier.fish.com",
+      "port": "7002",
+      "portmap": "-p 7002:7051 -p 8002:7061",
+      "type": "peer",
+      "url": "192.168.1.91"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.dealer.fish.com",
+      "mspid": "dealer-fish-com",
+      "name": "peer2",
+      "oport": "8003",
+      "org": "dealer.fish.com",
+      "port": "7003",
+      "portmap": "-p 7003:7051 -p 8003:7061",
+      "type": "peer",
+      "url": "192.168.1.91"
+    }
+  ],
+  "caorgs": [
+    "dealer.fish.com",
+    "supplier.fish.com"
+  ],
+  "console_port": "7011",
+  "explorer_port": "7009",
+  "ordererorgs": [
+    "example.com"
+  ],
+  "orgattrs": {
+    "dealer.fish.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "dealer-fish-com"
+    },
+    "example.com": {
+      "certpath": "ordererOrganizations",
+      "mspid": "example-com"
+    },
+    "supplier.fish.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "supplier-fish-com"
+    }
+  },
+  "peerorgs": [
+    "dealer.fish.com",
+    "supplier.fish.com"
+  ],
+  "portainer_port": "7010"
+}

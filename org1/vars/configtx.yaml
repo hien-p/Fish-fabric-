@@ -1,0 +1,175 @@
+---
+Organizations:
+  - &dealer-fish-com
+      Name: dealer-fish-com
+      ID: dealer-fish-com
+      MSPDir: keyfiles/peerOrganizations/dealer.fish.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('dealer-fish-com.admin', 'dealer-fish-com.peer', 'dealer-fish-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('dealer-fish-com.admin', 'dealer-fish-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('dealer-fish-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('dealer-fish-com.peer')"
+
+      AnchorPeers:
+      - Host: 192.168.1.91
+        Port: 7003
+  - &example-com
+      Name: example-com
+      ID: example-com
+      MSPDir: keyfiles/ordererOrganizations/example.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('example-com.member')"
+        Writers:
+          Type: Signature
+          Rule: "OR('example-com.member')"
+        Admins:
+          Type: Signature
+          Rule: "OR('example-com.admin')"
+  - &supplier-fish-com
+      Name: supplier-fish-com
+      ID: supplier-fish-com
+      MSPDir: keyfiles/peerOrganizations/supplier.fish.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('supplier-fish-com.admin', 'supplier-fish-com.peer', 'supplier-fish-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('supplier-fish-com.admin', 'supplier-fish-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('supplier-fish-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('supplier-fish-com.peer')"
+
+      AnchorPeers:
+      - Host: 192.168.1.91
+        Port: 7002
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+  Orderer: &OrdererCapabilities
+    V2_0: true
+
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+
+  Addresses:
+  - 192.168.1.91:7006
+  - 192.168.1.91:7007
+  EtcdRaft:
+    Consenters:
+    - Host: 192.168.1.91
+      Port: 7006
+      ClientTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/server.crt
+    - Host: 192.168.1.91
+      Port: 7007
+      ClientTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  OrgChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - *dealer-fish-com
+      - *supplier-fish-com
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  OrdererGenesis:
+    <<: *ChannelDefaults
+    Capabilities:
+      <<: *ChannelCapabilities
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+      - *example-com
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - <<: *example-com
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+        - *dealer-fish-com
+        - *supplier-fish-com
